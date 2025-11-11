@@ -17,6 +17,7 @@ const int INIT_SIZE = 2;
 // Fn prototypes
 int prob();
 void printDeque(const deque<Car>& cars);
+
 // -----------------------------
 // Main
 // -----------------------------
@@ -40,7 +41,7 @@ int main() {
 
         // 55% chance front car leaves
         // 45% chance new car arrives at end
-        prob = prob();
+        int prob = prob();
 
         if (prob <= 55) {
             cout << "Time " << t << " Operation: Car paid:";
