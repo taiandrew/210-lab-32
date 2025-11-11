@@ -29,12 +29,13 @@ int main() {
     // Deque of Cars of INIT_SIZE
     deque<Car> cars;
     for (int i = 0; i < INIT_SIZE; i++) {
-        cars.push_back(Car());      // EDIT ONCE CAR CLASS IS AVAILABLE
+        cars.push_back(Car());
     }
     cout << "Initial queue:" << endl;
     printDeque(cars);
+    cout << endl;
 
-    /*
+    
     // Simulation
     int t = 1;
     while (cars.size() > 0) {
@@ -42,28 +43,29 @@ int main() {
 
         // 55% chance front car leaves
         // 45% chance new car arrives at end
-        int prob = prob();
+        int pr = prob();
 
-        if (prob <= 55) {
+        if (pr <= 55) {
             cout << "Time " << t << " Operation: Car paid:";
-            cars.front().print();        // Syntax?? EDIT ONCE CAR CLASS IS AVAILABLE
+            cars.at(0).print();
             cout << endl;
             
-            cars.pop_front();           // EDIT ONCE CAR CLASS IS AVAILABLE
+            cars.pop_front();
 
         }
         else {
             cout << "Time " << t << " Operation: New car arrived:";
-            cars.push_back(Car());      // EDIT ONCE CAR CLASS IS AVAILABLE
-            cars.back().print();        // Syntax?? EDIT ONCE CAR CLASS IS AVAILABLE
+            cars.push_back(Car());
+            cars.back().print();
             cout << endl;
         }
 
         // Print current queue
         cout << "Queue:" << endl;
         printDeque(cars);
+        cout << endl;
     }
-    */
+    
     return 0;
 }
 
@@ -87,6 +89,6 @@ void printDeque(deque<Car>& cars) {
     // Print each car
     for (size_t i = 0; i < cars.size(); i++) {
         cout << "\t";
-        cars[i].print();
+        cars.at(i).print();
     }
 }
