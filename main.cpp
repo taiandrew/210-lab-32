@@ -75,6 +75,13 @@ int prob() {
 
 void printDeque(const deque<Car>& cars) {
     // Prints car info (indented)
+
+    // If list is empty
+    if (cars.size() == 0) {
+        cout << "\tEmpty" << endl;
+        return;
+    }
+
     for (const Car& car : cars) {
         cout << "\t";
         car.print();        // EDIT ONCE CAR CLASS IS AVAILABLE
