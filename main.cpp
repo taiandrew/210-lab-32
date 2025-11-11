@@ -24,6 +24,7 @@ const int PR_SHIFT = 15;
 // Fn prototypes
 int prob();
 void printDeque(deque<Car>& cars);
+void printAllLanes(array<deque<Car>, N_LANES>& lanes);
 
 // -----------------------------
 // Main
@@ -42,10 +43,7 @@ int main() {
         }
     }
     cout << "Initial queues:" << endl;
-    for (int i = 0; i < N_LANES; i++) {
-        cout << "Lane " << i+1 << ":" << endl;
-        printDeque(lanes[i]);
-    }
+    printAllLanes(lanes);
     cout << endl;
 
     /*
@@ -101,5 +99,12 @@ void printDeque(deque<Car>& cars) {
     for (size_t i = 0; i < cars.size(); i++) {
         cout << "\t";
         cars.at(i).print();
+    }
+}
+
+void printAllLanes(array<deque<Car>, N_LANES>& lanes) {
+    for (int i = 0; i < N_LANES; i++) {
+        cout << "Lane " << i+1 << " Queue:" << endl;
+        printDeque(lanes[i]);
     }
 }
