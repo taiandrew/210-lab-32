@@ -13,6 +13,7 @@ using namespace std;
 
 // Constants
 const int INIT_SIZE = 2;
+const int PR_CUTOFF = 55;
 
 // Fn prototypes
 int prob();
@@ -38,13 +39,11 @@ int main() {
     // Simulation
     int t = 1;
     while (cars.size() > 0) {
+        
         t++;
-
-        // 55% chance front car leaves
-        // 45% chance new car arrives at end
         int pr = prob();
 
-        if (pr <= 55) {
+        if (pr <= PR_CUTOFF) {
             // Print front car and pop
             cout << "Time " << t << " Operation: Car paid: ";
             cars.at(0).print();
