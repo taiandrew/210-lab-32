@@ -15,6 +15,7 @@ using namespace std;
 // Constants
 const int INIT_SIZE = 2;
 const int N_LANES = 4;
+const int N_PERIODS = 20;
 
 const int PR_LEAVE = 46;
 const int PR_ARRIVE = 39;
@@ -52,7 +53,7 @@ int main() {
     
     
     // Simulation
-    for (int t = 0; t < 20; t++) {
+    for (int t = 0; t < N_PERIODS; t++) {
 
         cout << "Time " << t+1 << endl;
 
@@ -60,14 +61,22 @@ int main() {
         for (int l = 0; l < N_LANES; l++) {
             int pr = prob();
 
+            // If lane empty, 50/50 arrive
+            if (pr<=50 && lanes[l].size() == 0) {
+                cout << "Lane " << l+1 << " joined: ";
+                lanes[l].push_back(Car());
+                lanes[l].back().print();
+                continue;
+            }
+
             // Leaves
-            if (pr <= 50 && lanes[l].size() > 0) {
+            if (pr <= PR_LEAVE && lanes[l].size() > 0) {
                 cout << "Lane " << l+1 << " paid: ";
                 lanes[l].at(0).print();
                 lanes[l].pop_front();
             }
             // Arrives
-            else if (pr > 50) {
+            else if (pr <= PR_LEAVE + PR_ARRIVE) {
                 cout << "Lane " << l+1 << " joined: ";
                 lanes[l].push_back(Car());
                 lanes[l].back().print();
