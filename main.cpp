@@ -25,6 +25,7 @@ const int PR_SHIFT = 15;
 int prob();
 void printDeque(deque<Car>& cars);
 void printAllLanes(array<deque<Car>, N_LANES>& lanes);
+void testDriver(array<deque<Car>, N_LANES> lanes);
 
 // -----------------------------
 // Main
@@ -36,6 +37,7 @@ int main() {
 
     // Initialize N_LANES array of deques
     array<deque<Car>, N_LANES> lanes;
+    //testDriver(lanes);
     for (int i = 0; i < N_LANES; i++) {
         // Deque of Cars of INIT_SIZE
         for (int j = 0; j < INIT_SIZE; j++) {
@@ -45,7 +47,7 @@ int main() {
     cout << "Initial queues:" << endl;
     printAllLanes(lanes);
     cout << endl;
-
+    
     /*
     // Simulation
     int t = 1;
@@ -107,4 +109,15 @@ void printAllLanes(array<deque<Car>, N_LANES>& lanes) {
         cout << "Lane " << i+1 << " Queue:" << endl;
         printDeque(lanes[i]);
     }
+}
+
+void testDriver(array<deque<Car>, N_LANES> lanes) {
+    // Test function for debugging
+
+    printAllLanes(lanes);
+
+    // Add one car to lane 2
+    cout << "Adding car to lane 2:" << endl;
+    lanes[1].push_back(Car());
+    printAllLanes(lanes);
 }
