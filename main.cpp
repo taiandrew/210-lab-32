@@ -16,7 +16,7 @@ const int INIT_SIZE = 2;
 
 // Fn prototypes
 int prob();
-void printDeque(const deque<Car>& cars);
+void printDeque(deque<Car>& cars);
 
 // -----------------------------
 // Main
@@ -34,6 +34,7 @@ int main() {
     cout << "Initial queue:" << endl;
     printDeque(cars);
 
+    /*
     // Simulation
     int t = 1;
     while (cars.size() > 0) {
@@ -62,7 +63,7 @@ int main() {
         cout << "Queue:" << endl;
         printDeque(cars);
     }
-
+    */
     return 0;
 }
 
@@ -74,7 +75,7 @@ int prob() {
     return rand() % 100 + 1;
 }
 
-void printDeque(const deque<Car>& cars) {
+void printDeque(deque<Car>& cars) {
     // Prints car info (indented)
 
     // If list is empty
@@ -83,10 +84,9 @@ void printDeque(const deque<Car>& cars) {
         return;
     }
 
-    for (const Car& car : cars) {
+    // Print each car
+    for (size_t i = 0; i < cars.size(); i++) {
         cout << "\t";
-        car.print();        // EDIT ONCE CAR CLASS IS AVAILABLE
-        cout << endl;
+        cars[i].print();
     }
-    cout << endl;
 }
