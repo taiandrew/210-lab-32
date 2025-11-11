@@ -52,7 +52,7 @@ int main() {
     cout << endl;
     
     
-    // Simulation
+    // Simulation loop
     for (int t = 0; t < N_PERIODS; t++) {
 
         cout << "Time " << t+1 << endl;
