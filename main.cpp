@@ -34,7 +34,6 @@ int main() {
     cout << "Initial queue:" << endl;
     printDeque(cars);
     cout << endl;
-
     
     // Simulation
     int t = 1;
@@ -46,14 +45,14 @@ int main() {
         int pr = prob();
 
         if (pr <= 55) {
-            cout << "Time " << t << " Operation: Car paid:";
+            // Print front car and pop
+            cout << "Time " << t << " Operation: Car paid: ";
             cars.at(0).print();
-            cout << endl;
-            
             cars.pop_front();
 
         }
         else {
+            // Add car to the end and print
             cout << "Time " << t << " Operation: New car arrived:";
             cars.push_back(Car());
             cars.back().print();
