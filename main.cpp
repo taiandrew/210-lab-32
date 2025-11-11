@@ -2,6 +2,7 @@
 // IDE: VS Code
 
 #include <algorithm>
+#include <array>
 #include <cstdlib>
 #include <deque>
 #include <iostream>
@@ -13,8 +14,12 @@ using namespace std;
 
 // Constants
 const int INIT_SIZE = 2;
-const int PR_CUTOFF = 55;
 const int N_LANES = 4;
+
+const int PR_LEAVE = 46;
+const int PR_ARRIVE = 39;
+const int PR_SHIFT = 15;
+
 
 // Fn prototypes
 int prob();
@@ -28,15 +33,22 @@ int main() {
     // Set seed
     srand(time(0));
 
-    // Deque of Cars of INIT_SIZE
-    deque<Car> cars;
-    for (int i = 0; i < INIT_SIZE; i++) {
-        cars.push_back(Car());
+    // Initialize N_LANES array of deques
+    array<deque<Car>, N_LANES> lanes;
+    for (int i = 0; i < N_LANES; i++) {
+        // Deque of Cars of INIT_SIZE
+        for (int j = 0; j < INIT_SIZE; j++) {
+            lanes[i].push_back(Car());
+        }
     }
-    cout << "Initial queue:" << endl;
-    printDeque(cars);
+    cout << "Initial queues:" << endl;
+    for (int i = 0; i < N_LANES; i++) {
+        cout << "Lane " << i+1 << ":" << endl;
+        printDeque(lanes[i]);
+    }
     cout << endl;
-    
+
+    /*
     // Simulation
     int t = 1;
     while (cars.size() > 0) {
@@ -64,7 +76,7 @@ int main() {
         printDeque(cars);
         cout << endl;
     }
-    
+    */
     return 0;
 }
 
