@@ -14,6 +14,7 @@ using namespace std;
 // Constants
 const int INIT_SIZE = 2;
 const int PR_CUTOFF = 55;
+const int N_LANES = 4;
 
 // Fn prototypes
 int prob();
@@ -39,7 +40,7 @@ int main() {
     // Simulation
     int t = 1;
     while (cars.size() > 0) {
-        
+
         t++;
         int pr = prob();
 
