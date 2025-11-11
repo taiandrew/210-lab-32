@@ -15,7 +15,7 @@ using namespace std;
 // Constants
 const int INIT_SIZE = 2;
 const int N_LANES = 4;
-const int N_PERIODS = 20;
+const int N_PERIODS = 5;
 
 const int PR_LEAVE = 46;
 const int PR_ARRIVE = 39;
@@ -80,6 +80,21 @@ int main() {
                 cout << "Lane " << l+1 << " joined: ";
                 lanes[l].push_back(Car());
                 lanes[l].back().print();
+            }
+            // Switches
+            else if (pr <= PR_LEAVE + PR_ARRIVE + PR_SHIFT && lanes[l].size() > 0) {
+                cout << "Lane " << l+1 << " switched: ";
+
+                // Find different lane
+                int newLane;
+                do {
+                    newLane = rand() % N_LANES;
+                } while (newLane == l);
+
+                // Switch to new lane
+                lanes[newLane].push_back(lanes[l].back());
+                lanes[l].back().print();
+                lanes[l].pop_back();
             }
         }
 
