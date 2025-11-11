@@ -15,12 +15,11 @@ using namespace std;
 // Constants
 const int INIT_SIZE = 2;
 const int N_LANES = 4;
-const int N_PERIODS = 5;
+const int N_PERIODS = 20;
 
 const int PR_LEAVE = 46;
 const int PR_ARRIVE = 39;
 const int PR_SHIFT = 15;
-
 
 // Fn prototypes
 int prob();
@@ -38,7 +37,7 @@ int main() {
 
     // Initialize N_LANES array of deques
     array<deque<Car>, N_LANES> lanes;
-    //testDriver(lanes);
+    //testDriver(lanes);        // Test driver for data structure
     for (int i = 0; i < N_LANES; i++) {
         // Deque of Cars of INIT_SIZE
         for (int j = 0; j < INIT_SIZE; j++) {
