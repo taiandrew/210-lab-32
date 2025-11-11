@@ -34,19 +34,33 @@ int main() {
     printDeque(cars);
 
     // Simulation
+    int t = 1;
     while (cars.size() > 0) {
+        t++;
 
         // 55% chance front car leaves
         // 45% chance new car arrives at end
         prob = prob();
 
         if (prob <= 55) {
-            cout << "Time: 2 Operation: Car paid: [2000 Volkswagen (2408)]" << endl;
+            cout << "Time " << t << " Operation: Car paid:";
+            cars.front().print();        // Syntax?? EDIT ONCE CAR CLASS IS AVAILABLE
+            cout << endl;
+            
             cars.pop_front();           // EDIT ONCE CAR CLASS IS AVAILABLE
+
         }
+        else {
+            cout << "Time " << t << " Operation: New car arrived:";
+            cars.push_back(Car());      // EDIT ONCE CAR CLASS IS AVAILABLE
+            cars.back().print();        // Syntax?? EDIT ONCE CAR CLASS IS AVAILABLE
+            cout << endl;
+        }
+
+        // Print current queue
+        cout << "Queue:" << endl;
+        printDeque(cars);
     }
-
-
 
     return 0;
 }
@@ -64,6 +78,7 @@ void printDeque(const deque<Car>& cars) {
     for (const Car& car : cars) {
         cout << "\t";
         car.print();        // EDIT ONCE CAR CLASS IS AVAILABLE
+        cout << endl;
     }
     cout << endl;
 }
