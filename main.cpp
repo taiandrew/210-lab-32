@@ -44,39 +44,42 @@ int main() {
             lanes[i].push_back(Car());
         }
     }
+
+    // Print init queues
     cout << "Initial queues:" << endl;
     printAllLanes(lanes);
     cout << endl;
     
-    /*
+    
     // Simulation
-    int t = 1;
-    while (cars.size() > 0) {
+    for (int t = 0; t < 20; t++) {
 
-        t++;
-        int pr = prob();
+        cout << "Time " << t+1 << endl;
 
-        if (pr <= PR_CUTOFF) {
-            // Print front car and pop
-            cout << "Time " << t << " Operation: Car paid: ";
-            cars.at(0).print();
-            cars.pop_front();
+        // For each lane...
+        for (int l = 0; l < N_LANES; l++) {
+            int pr = prob();
 
+            // Leaves
+            if (pr <= 50 && lanes[l].size() > 0) {
+                cout << "Lane " << l+1 << " paid: ";
+                lanes[l].at(0).print();
+                lanes[l].pop_front();
+            }
+            // Arrives
+            else if (pr > 50) {
+                cout << "Lane " << l+1 << " joined: ";
+                lanes[l].push_back(Car());
+                lanes[l].back().print();
+            }
         }
-        else {
-            // Add car to the end and print
-            cout << "Time " << t << " Operation: New car arrived:";
-            cars.push_back(Car());
-            cars.back().print();
-            cout << endl;
-        }
 
-        // Print current queue
-        cout << "Queue:" << endl;
-        printDeque(cars);
+        // Print all lanes
+        printAllLanes(lanes);
         cout << endl;
+
     }
-    */
+    
     return 0;
 }
 
